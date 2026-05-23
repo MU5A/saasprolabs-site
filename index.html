@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SaasPro Labs | AI Infrastructure for Insurance</title>
-    <meta name="description" content="AI-powered infrastructure for insurance and healthcare in Africa. Automate claims, detect fraud, and deliver better customer experiences.">
+    <title>SaasPro Labs | AI Agents for Financial Services</title>
+    <meta name="description" content="AI-powered infrastructure for insurance, banking, and fintech. Automate claims, detect fraud, and transform your operations with generative AI.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -16,21 +16,24 @@
         }
 
         :root {
-            --primary: #6366f1;
-            --primary-dark: #4f46e5;
-            --bg-dark: #0a0a0f;
-            --bg-card: #12121a;
-            --text: #ffffff;
-            --text-muted: #a1a1aa;
-            --border: #27272a;
+            --primary: #4F46E5;
+            --primary-light: #6366F1;
+            --primary-dark: #3730A3;
+            --bg: #FFFFFF;
+            --bg-alt: #F9FAFB;
+            --bg-dark: #111827;
+            --text: #111827;
+            --text-light: #6B7280;
+            --text-white: #FFFFFF;
+            --border: #E5E7EB;
+            --gradient: linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%);
         }
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: var(--bg-dark);
+            background: var(--bg);
             color: var(--text);
             line-height: 1.6;
-            min-height: 100vh;
         }
 
         .container {
@@ -41,7 +44,14 @@
 
         /* Navigation */
         nav {
-            padding: 24px 0;
+            padding: 20px 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
             border-bottom: 1px solid var(--border);
         }
 
@@ -64,14 +74,15 @@
 
         .nav-links {
             display: flex;
-            gap: 32px;
+            gap: 40px;
             align-items: center;
         }
 
         .nav-links a {
-            color: var(--text-muted);
+            color: var(--text-light);
             text-decoration: none;
             font-size: 0.95rem;
+            font-weight: 500;
             transition: color 0.2s;
         }
 
@@ -83,9 +94,9 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            padding: 12px 24px;
+            padding: 12px 28px;
             border-radius: 8px;
-            font-weight: 500;
+            font-weight: 600;
             font-size: 0.95rem;
             text-decoration: none;
             transition: all 0.2s;
@@ -100,235 +111,463 @@
 
         .btn-primary:hover {
             background: var(--primary-dark);
-            transform: translateY(-1px);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
         }
 
-        .btn-outline {
-            background: transparent;
+        .btn-secondary {
+            background: var(--bg-alt);
             color: var(--text);
             border: 1px solid var(--border);
         }
 
-        .btn-outline:hover {
-            border-color: var(--text-muted);
+        .btn-secondary:hover {
+            background: var(--border);
+        }
+
+        .btn-white {
+            background: white;
+            color: var(--primary);
+        }
+
+        .btn-white:hover {
+            background: var(--bg-alt);
         }
 
         /* Hero */
         .hero {
-            padding: 120px 0 80px;
-            text-align: center;
+            padding: 160px 0 100px;
+            background: var(--bg);
+            position: relative;
+            overflow: hidden;
         }
 
-        .badge {
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background: var(--gradient);
+            opacity: 0.03;
+            border-radius: 0 0 0 100%;
+        }
+
+        .hero-content {
+            max-width: 700px;
+        }
+
+        .hero-label {
             display: inline-block;
             padding: 8px 16px;
-            background: rgba(99, 102, 241, 0.1);
-            border: 1px solid rgba(99, 102, 241, 0.3);
+            background: rgba(79, 70, 229, 0.1);
             border-radius: 100px;
-            font-size: 0.85rem;
+            font-size: 0.875rem;
+            font-weight: 600;
             color: var(--primary);
             margin-bottom: 24px;
         }
 
         .hero h1 {
-            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
             font-weight: 700;
-            line-height: 1.1;
+            line-height: 1.15;
             margin-bottom: 24px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .hero h1 span {
-            background: linear-gradient(135deg, var(--primary) 0%, #a855f7 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: var(--text);
         }
 
         .hero p {
             font-size: 1.25rem;
-            color: var(--text-muted);
-            max-width: 600px;
-            margin: 0 auto 40px;
+            color: var(--text-light);
+            margin-bottom: 40px;
+            line-height: 1.7;
         }
 
         .hero-buttons {
             display: flex;
             gap: 16px;
-            justify-content: center;
             flex-wrap: wrap;
         }
 
-        /* Features */
-        .features {
-            padding: 80px 0;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .section-title h2 {
-            font-size: 2rem;
-            margin-bottom: 16px;
-        }
-
-        .section-title p {
-            color: var(--text-muted);
-            max-width: 500px;
-            margin: 0 auto;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 24px;
-        }
-
-        .feature-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 32px;
-            transition: border-color 0.2s, transform 0.2s;
-        }
-
-        .feature-card:hover {
-            border-color: var(--primary);
-            transform: translateY(-4px);
-        }
-
-        .feature-icon {
-            width: 48px;
-            height: 48px;
-            background: rgba(99, 102, 241, 0.1);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 20px;
-            font-size: 1.5rem;
-        }
-
-        .feature-card h3 {
-            font-size: 1.25rem;
-            margin-bottom: 12px;
-        }
-
-        .feature-card p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-        }
-
-        /* Stats */
-        .stats {
+        /* Trust Section */
+        .trust {
             padding: 60px 0;
+            background: var(--bg-alt);
             border-top: 1px solid var(--border);
             border-bottom: 1px solid var(--border);
         }
 
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 40px;
+        .trust p {
             text-align: center;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 32px;
         }
 
-        .stat h3 {
-            font-size: 3rem;
+        .trust-logos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 60px;
+            flex-wrap: wrap;
+            opacity: 0.6;
+        }
+
+        .trust-logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-light);
+        }
+
+        /* Products Section */
+        .products {
+            padding: 100px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 60px;
+        }
+
+        .section-label {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 16px;
+        }
+
+        .section-header h2 {
+            font-size: 2.25rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .section-header p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+
+        .product-block {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            padding: 80px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .product-block:last-child {
+            border-bottom: none;
+        }
+
+        .product-block.reversed {
+            direction: rtl;
+        }
+
+        .product-block.reversed > * {
+            direction: ltr;
+        }
+
+        .product-content {
+            max-width: 500px;
+        }
+
+        .product-label {
+            font-size: 0.75rem;
             font-weight: 700;
             color: var(--primary);
-            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 16px;
         }
 
-        .stat p {
-            color: var(--text-muted);
+        .product-content h3 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            line-height: 1.3;
+        }
+
+        .product-content p {
+            color: var(--text-light);
+            font-size: 1.05rem;
+            margin-bottom: 24px;
+            line-height: 1.7;
+        }
+
+        .product-visual {
+            background: var(--gradient);
+            border-radius: 16px;
+            height: 320px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            opacity: 0.9;
+        }
+
+        /* Benefits */
+        .benefits {
+            padding: 100px 0;
+            background: var(--bg-dark);
+            color: var(--text-white);
+        }
+
+        .benefits .section-header h2 {
+            color: white;
+        }
+
+        .benefits .section-header p {
+            color: rgba(255,255,255,0.7);
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .benefit-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: 40px;
+            transition: transform 0.2s, background 0.2s;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-4px);
+            background: rgba(255,255,255,0.08);
+        }
+
+        .benefit-icon {
+            width: 56px;
+            height: 56px;
+            background: var(--gradient);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            font-size: 1.5rem;
+        }
+
+        .benefit-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .benefit-card p {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* Industries */
+        .industries {
+            padding: 100px 0;
+        }
+
+        .industries-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 24px;
+            margin-top: 60px;
+        }
+
+        .industry-card {
+            text-align: center;
+            padding: 40px 24px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            transition: all 0.2s;
+        }
+
+        .industry-card:hover {
+            border-color: var(--primary);
+            box-shadow: 0 4px 20px rgba(79, 70, 229, 0.1);
+        }
+
+        .industry-icon {
+            width: 64px;
+            height: 64px;
+            background: var(--bg-alt);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+            font-size: 1.75rem;
+        }
+
+        .industry-card h4 {
+            font-size: 1rem;
+            font-weight: 600;
         }
 
         /* CTA */
         .cta {
             padding: 100px 0;
-            text-align: center;
+            background: var(--bg-alt);
         }
 
         .cta-box {
-            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(168, 85, 247, 0.1) 100%);
-            border: 1px solid rgba(99, 102, 241, 0.3);
+            background: var(--gradient);
             border-radius: 24px;
-            padding: 60px 40px;
-            max-width: 700px;
-            margin: 0 auto;
+            padding: 80px 60px;
+            text-align: center;
+            color: white;
         }
 
         .cta h2 {
-            font-size: 2rem;
+            font-size: 2.25rem;
+            font-weight: 700;
             margin-bottom: 16px;
         }
 
         .cta p {
-            color: var(--text-muted);
+            font-size: 1.1rem;
+            opacity: 0.9;
             margin-bottom: 32px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
         }
 
         /* Footer */
         footer {
-            padding: 40px 0;
-            border-top: 1px solid var(--border);
+            padding: 60px 0 40px;
+            background: var(--bg-dark);
+            color: var(--text-white);
         }
 
-        footer .container {
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+
+        .footer-brand p {
+            color: rgba(255,255,255,0.6);
+            margin-top: 16px;
+            font-size: 0.95rem;
+        }
+
+        .footer-col h4 {
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 20px;
+            color: rgba(255,255,255,0.5);
+        }
+
+        .footer-col a {
+            display: block;
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            font-size: 0.95rem;
+            margin-bottom: 12px;
+            transition: color 0.2s;
+        }
+
+        .footer-col a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 40px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
-            gap: 20px;
         }
 
-        footer p {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-        }
-
-        .footer-links {
-            display: flex;
-            gap: 24px;
-        }
-
-        .footer-links a {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 0.9rem;
-        }
-
-        .footer-links a:hover {
-            color: var(--text);
+        .footer-bottom p {
+            color: rgba(255,255,255,0.5);
+            font-size: 0.875rem;
         }
 
         /* Mobile */
+        @media (max-width: 1024px) {
+            .industries-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .benefits-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
             }
 
             .hero {
-                padding: 80px 0 60px;
+                padding: 120px 0 60px;
             }
 
-            .hero-buttons {
+            .product-block {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .product-block.reversed {
+                direction: ltr;
+            }
+
+            .product-visual {
+                height: 240px;
+                order: -1;
+            }
+
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .industries-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .cta-box {
+                padding: 60px 30px;
+            }
+
+            .cta-buttons {
                 flex-direction: column;
                 align-items: center;
             }
 
-            .btn {
-                width: 100%;
-                max-width: 280px;
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
             }
 
-            footer .container {
+            .footer-bottom {
                 flex-direction: column;
+                gap: 16px;
                 text-align: center;
             }
         }
@@ -339,85 +578,154 @@
         <div class="container">
             <a href="/" class="logo">SaasPro<span>Labs</span></a>
             <div class="nav-links">
-                <a href="#features">Products</a>
+                <a href="#products">Products</a>
+                <a href="#industries">Industries</a>
                 <a href="#about">About</a>
-                <a href="mailto:contact@saasprolabs.com">Contact</a>
-                <a href="#" class="btn btn-primary">Get Started</a>
+                <a href="mailto:hello@saasprolabs.com">Contact</a>
+                <a href="mailto:hello@saasprolabs.com" class="btn btn-primary">Book a Demo</a>
             </div>
         </div>
     </nav>
 
     <section class="hero">
         <div class="container">
-            <div class="badge">🚀 Now accepting pilot partners</div>
-            <h1>AI Infrastructure for <span>Insurance & Healthcare</span></h1>
-            <p>Automate claims processing, detect fraud, and deliver exceptional customer experiences — powered by generative AI.</p>
-            <div class="hero-buttons">
-                <a href="mailto:contact@saasprolabs.com" class="btn btn-primary">Book a Demo</a>
-                <a href="/onepager.md" class="btn btn-outline">Learn More →</a>
+            <div class="hero-content">
+                <div class="hero-label">AI Agents for Financial Services</div>
+                <h1>Transform Your Insurance and Banking Operations with AI</h1>
+                <p>Leveraging the power of generative AI to automate claims processing, detect fraud, and deliver exceptional customer experiences across insurance, banking, and fintech.</p>
+                <div class="hero-buttons">
+                    <a href="mailto:hello@saasprolabs.com" class="btn btn-primary">Book a Demo</a>
+                    <a href="#products" class="btn btn-secondary">Explore Products</a>
+                </div>
             </div>
         </div>
     </section>
 
-    <section class="features" id="features">
+    <section class="trust">
         <div class="container">
-            <div class="section-title">
-                <h2>What We Build</h2>
-                <p>End-to-end AI solutions for modern insurance operations</p>
+            <p>Trusted by forward thinking companies</p>
+            <div class="trust-logos">
+                <span class="trust-logo">HMO Partners</span>
+                <span class="trust-logo">Insurance Carriers</span>
+                <span class="trust-logo">Healthcare Providers</span>
+                <span class="trust-logo">Fintechs</span>
             </div>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">⚡</div>
-                    <h3>Pre-Auth AI</h3>
-                    <p>Instant pre-authorization decisions. Eligibility checks, policy validation, and utilization review — automated.</p>
+        </div>
+    </section>
+
+    <section class="products" id="products">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Our Products</div>
+                <h2>AI Solutions Built for Scale</h2>
+                <p>End to end automation for modern insurance and financial services operations</p>
+            </div>
+
+            <div class="product-block">
+                <div class="product-content">
+                    <div class="product-label">Pre Auth AI</div>
+                    <h3>Instant Pre Authorization Decisions</h3>
+                    <p>Automate pre authorization workflows with intelligent eligibility verification, policy validation, and utilization review. Process requests in seconds, not hours, with human escalation for edge cases only.</p>
+                    <a href="mailto:hello@saasprolabs.com" class="btn btn-primary">Get Started</a>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📄</div>
-                    <h3>Claims AI</h3>
-                    <p>End-to-end claims processing. From submission to adjudication, reduce manual work by 80%+.</p>
+                <div class="product-visual">Pre Auth</div>
+            </div>
+
+            <div class="product-block reversed">
+                <div class="product-content">
+                    <div class="product-label">Claims AI</div>
+                    <h3>Faster Claims, Better Outcomes</h3>
+                    <p>Process health and auto insurance claims with AI powered adjudication. Reduce manual review by 80% while improving accuracy and customer satisfaction through instant decisions.</p>
+                    <a href="mailto:hello@saasprolabs.com" class="btn btn-primary">Get Started</a>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🔍</div>
-                    <h3>Extract AI</h3>
-                    <p>Turn documents into structured data instantly. Medical records, invoices, claims forms — all automated.</p>
+                <div class="product-visual">Claims</div>
+            </div>
+
+            <div class="product-block">
+                <div class="product-content">
+                    <div class="product-label">Extract AI</div>
+                    <h3>Documents to Data in Seconds</h3>
+                    <p>Transform medical records, invoices, and claims forms into structured data automatically. Our AI reads, classifies, and extracts information so your team never has to key it in manually again.</p>
+                    <a href="mailto:hello@saasprolabs.com" class="btn btn-primary">Get Started</a>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">💬</div>
-                    <h3>Support AI</h3>
-                    <p>24/7 intelligent customer support. Handle inquiries, check claim status, resolve issues automatically.</p>
+                <div class="product-visual">Extract</div>
+            </div>
+
+            <div class="product-block reversed">
+                <div class="product-content">
+                    <div class="product-label">Support AI</div>
+                    <h3>Smarter Customer Support</h3>
+                    <p>Help your team respond faster with AI powered messaging. Automate routine conversations, handle inquiries 24/7, and route complex issues to the right people instantly.</p>
+                    <a href="mailto:hello@saasprolabs.com" class="btn btn-primary">Get Started</a>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🛡️</div>
+                <div class="product-visual">Support</div>
+            </div>
+
+            <div class="product-block">
+                <div class="product-content">
+                    <div class="product-label">Pay AI</div>
+                    <h3>Streamlined Payment Operations</h3>
+                    <p>Automate payouts, reconciliation, and provider payments with intelligent financial workflows. From verification to settlement, every step is optimized for speed and accuracy.</p>
+                    <a href="mailto:hello@saasprolabs.com" class="btn btn-primary">Get Started</a>
+                </div>
+                <div class="product-visual">Payments</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="benefits">
+        <div class="container">
+            <div class="section-header">
+                <h2>Why Leading Companies Choose Us</h2>
+                <p>Measurable impact on your operations from day one</p>
+            </div>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">10x</div>
+                    <h3>Faster Processing</h3>
+                    <p>Claims and pre authorizations processed in seconds instead of days. Reduce turnaround time dramatically while improving customer satisfaction.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">80%</div>
+                    <h3>Automation Rate</h3>
+                    <p>Most decisions handled without human intervention. Your team focuses on exceptions and complex cases that truly need their expertise.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">AI</div>
                     <h3>Fraud Detection</h3>
-                    <p>ML-powered fraud detection. Identify suspicious patterns and anomalies in real-time.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">💳</div>
-                    <h3>Pay AI</h3>
-                    <p>Automate payouts, reconciliation, and provider payments with AI-assisted financial workflows.</p>
+                    <p>ML powered fraud detection identifies suspicious patterns, duplicate claims, and anomalies in real time, protecting your revenue and reducing losses.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="stats">
+    <section class="industries" id="industries">
         <div class="container">
-            <div class="stats-grid">
-                <div class="stat">
-                    <h3>10x</h3>
-                    <p>Faster Processing</p>
+            <div class="section-header">
+                <div class="section-label">Industries</div>
+                <h2>Solutions for Every Sector</h2>
+                <p>Purpose built AI for the unique challenges of each industry</p>
+            </div>
+            <div class="industries-grid">
+                <div class="industry-card">
+                    <div class="industry-icon">Health</div>
+                    <h4>Healthcare</h4>
                 </div>
-                <div class="stat">
-                    <h3>80%</h3>
-                    <p>Automation Rate</p>
+                <div class="industry-card">
+                    <div class="industry-icon">Auto</div>
+                    <h4>Automotive</h4>
                 </div>
-                <div class="stat">
-                    <h3>24/7</h3>
-                    <p>Always Available</p>
+                <div class="industry-card">
+                    <div class="industry-icon">Bank</div>
+                    <h4>Banking</h4>
                 </div>
-                <div class="stat">
-                    <h3>API</h3>
-                    <p>First Architecture</p>
+                <div class="industry-card">
+                    <div class="industry-icon">Tech</div>
+                    <h4>Fintech</h4>
+                </div>
+                <div class="industry-card">
+                    <div class="industry-icon">Ship</div>
+                    <h4>Logistics</h4>
                 </div>
             </div>
         </div>
@@ -426,19 +734,52 @@
     <section class="cta" id="about">
         <div class="container">
             <div class="cta-box">
-                <h2>Ready to transform your operations?</h2>
-                <p>We're working with HMOs and insurers across Africa. Start with a pilot, see results, then scale.</p>
-                <a href="mailto:contact@saasprolabs.com" class="btn btn-primary">Get in Touch</a>
+                <h2>Ready to Transform Your Operations?</h2>
+                <p>Join forward thinking companies using AI to process claims faster, detect fraud smarter, and deliver better customer experiences.</p>
+                <div class="cta-buttons">
+                    <a href="mailto:hello@saasprolabs.com" class="btn btn-white">Book a Demo</a>
+                    <a href="mailto:hello@saasprolabs.com" class="btn btn-secondary" style="background: transparent; border-color: rgba(255,255,255,0.3); color: white;">Contact Sales</a>
+                </div>
             </div>
         </div>
     </section>
 
     <footer>
         <div class="container">
-            <p>© 2026 SaasPro Labs. Built in Nigeria 🇳🇬</p>
-            <div class="footer-links">
-                <a href="mailto:contact@saasprolabs.com">Contact</a>
-                <a href="/onepager.md">One Pager</a>
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="/" class="logo">SaasPro<span>Labs</span></a>
+                    <p>AI powered infrastructure for insurance, banking, and fintech. Transforming operations with generative AI.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Products</h4>
+                    <a href="#products">Pre Auth AI</a>
+                    <a href="#products">Claims AI</a>
+                    <a href="#products">Extract AI</a>
+                    <a href="#products">Support AI</a>
+                    <a href="#products">Pay AI</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Industries</h4>
+                    <a href="#industries">Healthcare</a>
+                    <a href="#industries">Automotive</a>
+                    <a href="#industries">Banking</a>
+                    <a href="#industries">Fintech</a>
+                    <a href="#industries">Logistics</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <a href="#about">About</a>
+                    <a href="mailto:hello@saasprolabs.com">Contact</a>
+                    <a href="mailto:careers@saasprolabs.com">Careers</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>2026 SaasPro Labs. All rights reserved.</p>
+                <div>
+                    <a href="#" style="color: rgba(255,255,255,0.5); text-decoration: none; margin-left: 24px; font-size: 0.875rem;">Privacy Policy</a>
+                    <a href="#" style="color: rgba(255,255,255,0.5); text-decoration: none; margin-left: 24px; font-size: 0.875rem;">Terms of Service</a>
+                </div>
             </div>
         </div>
     </footer>
